@@ -1,0 +1,8 @@
+1.	Napraviti web stranicu sa URLResource 
+2.	U for petlji proci kroz sve rijeci u webstranici. 
+3.	Stavi rijec u novi temporary string koji ce drzati instancu lowstringova
+uzmi indeks of youtube.com
+4.	Provjeri da string nije prazan
+5.	Preuzmi prvi indeks sa lastindexof od youtube.com rijeci
+6.	Preuzmi zadnji indeks pozicije nakon youtube.com rijeci
+7.	Ispisi rezultate

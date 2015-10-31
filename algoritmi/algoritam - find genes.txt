@@ -1,0 +1,57 @@
+Algoritam da identificiras vise gena u stringu DNA.
+To find the first gene, find the start codon ATG.
+1. Da nadjes prvi gen, nadji prvi kodon ATG.
+Next look immediately past ATG for the first occurrence of each of the three stop codons TAG, TGA, and TAA.
+2. Onda pogledaj odma nakon ATG za prvo pojavljivanje svakog od tri stopCodona TAG, TGA i TAA.
+
+
+If the length of the substring between ATG and any of these three stop codons is a multiple of three, then a candidate for a gene is the start codon through the end of the stop codon.
+3. Ako je duljina substringa izmedju ATG i bilo kojeg od ta tri stop kodona dijeljiv sa tri, tada kandidat za gen je start kodon do kraja stopKodona
+If there is more than one valid candidate, the smallest such string is the gene. The gene includes the start and stop codon.
+
+
+4. Ako postoji vise od jednog valjanog kandidata, najmanji string je gen. Gen ukljucuje start i stop codon.
+
+If no start codon was found, then you are done.
+
+5. Ako start nije nadjen, onda si gotov.
+
+If a start codon was found, but no gene was found, then start searching for another gene via the next occurrence of a start codon starting immediately after the start codon that didn't yield a gene.
+
+
+6. Ako je start kodon nadjen, ali nijedan gen nije nadjen, onda pocni traziti za drugim genom pomocu sljedeceg dogadjaja start kodona pocevsi odma nakon start kodona koji nije prinosio genu.
+
+If a gene was found, then start searching for the next gene immediately after this found gene.
+7. Ako je gen nadjen, tada pocni traziti za sljedeci gen odmah nakon ovog nadjenog gena.
+
+------
+Write the method findStopIndex that has two parameters dna and index, where dna is a String of DNA and index is a position in the string. This method finds the first occurrence of each stop codon to the right of index. From those stop codons that are a multiple of three from index, it returns the smallest index position. It should return -1 if no stop codon was found and there is no such position. This method was discussed in one of the videos.
+
+Napisi metodu findStopIndex koji ima dva parametra dna i index, gdje je dna string od DNA i index je pozicija stringa. Ova metoda nailazi na prvo susretanje (dogadjaj) svakog stop codona nadesno od indeksa. Od tih stop codona koji su dijeljivi sa tri od indeksa, vraca najmanju indeks poziciju.
+
+Write the void method printAll that has one parameter dna, a String of DNA. This method should print all the genes it finds in DNA. This method should repeatedly look for a gene, and if it finds one, print it and then look for another gene. This method should call findStopIndex. This method was also discussed in one of the videos.
+
+Napisi void metodu printAll koja ima jedan parametar dna, string od DNA. Ova metoda bi trebala printati sve gene koje nadje u DNA. Ova metoda treba ponavljajuce traziti gen, i ako ga nadje, printaj ga i potrazi drugi gen. Ova metoda bi se trebala zvati findStopIndex. Ova metoda je isto raspravljena u jednom od videa.
+
+Write the void method testFinder that will use the two small DNA example strings shown below. For each string, it should print the string, and then print the genes found in the string. Here is sample output that includes the two DNA strings:
+Napisi void metodu testFinder koja ce upotrebljavati dva mala DNA string primjera pokazanih ispod. Za svaki string, trebalo bi isprintati string, i tada printati gene nadjene u stringu. Ovdje je sample output koji ukljucuje dva DNA stringa:
+
+DNA string is:
+ATGAAATGAAAA
+Gene found is:
+ATGAAATGA
+
+DNA string is:
+ccatgccctaataaatgtctgtaatgtaga
+Genes found are:
+atgccctaa
+atgtctgtaatgtag
+
+DNA string is:
+CATGTAATAGATGAATGACTGATAGATATGCTTGTATGCTATGAAAATGTGAAATGACCCA
+
+Genes found are:
+ATGTAA
+ATGAATGACTGATAG
+ATGCTATGA
+ATGTGA
