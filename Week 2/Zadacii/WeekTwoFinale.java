@@ -168,13 +168,17 @@ public StorageResource printAll(String dna) {
         System.out.println(" ");
       
          StorageResource dinamo = new StorageResource();
-         //dinamo = printAll(dna);
+         dinamo = printAll(dna);
          //printGenes(dinamo);        
          int counter = 0;
-         //for (String line : dinamo.data()) {
-         //   counter++;}
-         //   System.out.println("counter: " + counter);
+         int najveciLine  = 0;
+         for (String line : dinamo.data()) {
+            if (line.length() > najveciLine)
+                najveciLine = line.length();
+            counter++;}
+           System.out.println("counter: " + counter);
+           System.out.println("najveca linija ima: " + najveciLine + " duzinu");
         //cgRatio(dna);
-        //System.out.println("result: " + lowerSubDna); 
+         
     }
 }
