@@ -20,7 +20,7 @@ public StorageResource printAll(String dna) {
             }
             
             //end je prvi indeks odmah nakon tag indeksa
-            int end  = findStopIndex(dna, tag+3);
+            int end  = findStopIndex(lowerSubDna, tag+3);
             //nadji end pozivanjem metode findStopIndex  
            
            
@@ -103,7 +103,7 @@ public StorageResource printAll(String dna) {
     }
 
     public float cgRatio (String dna) {
-        FileResource fr = new FileResource("dna/brca1line.fa");
+        FileResource fr = new FileResource("dna/GRch38dnapart.fa");
         StorageResource store = new StorageResource();
         int IndexDna = 0;
         while(true) {
@@ -111,6 +111,7 @@ public StorageResource printAll(String dna) {
                 break;
             char slovo = dna.charAt(IndexDna);
             String slovoString = String.valueOf(slovo);
+            slovoString = slovoString.toLowerCase();
             store.add(slovoString);
             IndexDna = IndexDna + 1;
         } 
@@ -160,25 +161,33 @@ public StorageResource printAll(String dna) {
     }
 
     public void testing() {
-        FileResource fr = new FileResource("dna/brca1line.fa");
+        FileResource fr = new FileResource("dna/GRch38dnapart.fa");
         String dna  = fr.asString();
-        findAnyGene("AATGCTAGTTTAAATCTGA", "AAT"); 
+        findAnyGene(dna, "ctg"); 
 
         //System.out.println("Dna string is: \n" + dna);
         System.out.println(" ");
       
          StorageResource dinamo = new StorageResource();
          dinamo = printAll(dna);
-         //printGenes(dinamo);        
+         printGenes(dinamo);        
          int counter = 0;
          int najveciLine  = 0;
+         int sixtyCounter = 0;
+         int cgRatioCounter = 0;
          for (String line : dinamo.data()) {
             if (line.length() > najveciLine)
                 najveciLine = line.length();
-            counter++;}
-           System.out.println("counter: " + counter);
+            counter++;
+            if (line.length() > 60)
+                sixtyCounter++;
+           
+        }
+           System.out.println("broj svih linija gena: " + counter);
            System.out.println("najveca linija ima: " + najveciLine + " duzinu");
-        //cgRatio(dna);
+           System.out.println("broj linija vecih od sesdeset: " + sixtyCounter);
+        //   printGenes(dinamo);
+           findAnyGene(dna, "CTG"); 
          
     }
 }
