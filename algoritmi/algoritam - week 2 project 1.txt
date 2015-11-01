@@ -1,0 +1,1 @@
+findProtein funkcija prima string Dna, te vraca sto 
