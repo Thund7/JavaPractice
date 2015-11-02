@@ -1,1 +1,8 @@
-findProtein funkcija prima string Dna, te vraca sto 
+findProtein funkcija prima string Dna, te vraca string
+koji nalazi protein koji se trazi. Prvi codon se zove
+atg, pozivamo indeksOf da nadjemo indeks gdje se nalazi.
+Ako ga ne nadjemo, saljemo neku poruku natrag da se zna
+da ga nismo nasli. Drugi postupak je da nadjemo drugi
+codon ili genom, zavrsni genom, zvan tag, isto pomocu indexOf, ali tri mjesta nakon prvog genoma. Moramo biti sigurni da izmedju prvog genoma i zadnjeg genoma postoje genomi po tri slova, tako da pozovemo % i dijelimo sa tri, da ostane nula kao ostatak. Ako je stvarno nula, granamo tako da vracamo protein koji smo nasli. Ako nije dijeljiv sa nula, vracamo prazan string ili koju god poruku zelimo.
+
+testing je nasa glavna funkcija. sadrzi dva stringa gena, jedan koji je glavni dna, a drugi protein koji bismo trebali naci. Pozivanjem funkcije findProtein nalazimo rezultat koji trazimo i spremamo ga u string result. Provjeravamo da li je jednak sa drugim stringom, i ako je ispisujemo success. Ako nije, ispisujemo mistake, ispisujemo sto smo dobili a sto smo trebali dobiti
