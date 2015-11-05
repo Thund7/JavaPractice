@@ -1,0 +1,19 @@
+U ovom programu moramo naci koji je najvruciji dan u godini. U metodi hottestHourInFile, prolazimo kroz svaki red parsera i trazimo temperatureF. Prvo cemo napraviti CSVRecord largestSoFar kojem cemo dati vrijednost null, jer jos nije nadjen nijedan largest so far. ako je largestsofar null, spremit cemo u nj trenutacni red. a za ostalo, prvo cemo spremiti trenutacnu temperaturu, a onda u drugu varijablu largestTemp najvecu temperaturu. Naravno, premda je largestsofar csvrecord objekt, mozemo pomocu njega pozvati temperaturu da vidimo kolika je.
+
+ako je trenutacna temperatura veca od najvece, onda spremamo trenutacnu temperaturu u largestsofar varijablu
+
+algoritam:
+1. prvo napraviti csvrecord zvan largestSoFar gdje cemo spremati najveci zapis
+2. inicijalizirat cemo ga na nulu kako bi znali da nista nije u njemu
+3. ako nista nije u njemu, pohranit cemo trenutacni red
+4. ako je nesto u njemu onda:
+a) spremit cemo temperaturu trenutacnog reda u double currentTemp
+b) spremit cemo csvRecorda largestSoFar u trenutacnu varijablu largestTemp
+c) ako je currentTemp veci od largestTemp, spremamo ga u largestSoFar
+5. vracamo largestSoFar double
+
+tester:
+1. prvo pozvati fileResource koji sadrzi file koji trebamo
+2. e sad, napravit cemo csvRecord largest u kojem cemo pozvati funkciju hottestHourInFile
+(zapamti parser je glavni csv file, a record je samo jedan zapis u csv fileu, znaci za argument za funkciju parsirat cemo fileresource)
+3. isprintati rezultat i vrijeme

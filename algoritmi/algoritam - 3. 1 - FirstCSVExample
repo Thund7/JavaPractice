@@ -1,3 +1,7 @@
 U ovom projektu ocitat cemo iz prvog csv primjera. CSV znaci coma separated values, jer bas tako izgleda. CSV je tipa spreadsheet koji svaki spreadsheet moze ucitati. Ovaj odredjeni sadrzi imena, i najdrazu hranu i boje.
 Prvo cemo otvoriti za korisnika folder, pomocu objekta FileResource. Onda cemo napraviti novi csvparser, koji sadrzi te csv shit i parsirat ce sve iz fileresourca, a to cemo napraviti tako da cemo pozvati metodu getCSVParser(). 
 Tada ulazimo u petlju, i vrsta objekta koji ide u petlju zove se CSVRecord. Drugi je jednostavno CSVParser koji smo napravili. Zapise koje zelimo mozemo dobiti sa metodom record.get(ime zapisa koje zelimo) i onda ih mozemo isprintati
+
+1. otvoriti folder gdje korisnik moze izabrati csv file
+2. napraviti novi csv parser i ucitati u njega sve iz filea koji je korisnik odabrao
+3. ispisi svaki zapis po retcima

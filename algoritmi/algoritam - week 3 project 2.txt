@@ -1,0 +1,22 @@
+Napisat ces program za najhladniji dan u godini i druge interesantne cinjenice o temperaturi i vlaznosti u danu.
+
+Da bi testirao svoj program, koristit ces nc_weather data folder koji sadrzi folder za svaku godinu; mozes downloadati .zip folder s tim fileovima kad kliknes ovdje.
+
+ U year folderu gdje je CSV file za svaki dan u godini; svaki file ima sve informacije tog dana. Npr. u godini 2014 folderu, pokazujemo dijelove file weather-2014-01-08.csv, weather data iz januara 8, 2014. 
+
+ Napisat ces program sa nekoliko metoda i tester metoda da bi testirao svaku metodu koju napises.
+
+  Pocni sa metodama iz lekcije da bi nasao najtopliju temperaturu u danu (and thus u fileu) i najtopliju temperaturu u vise fileova i njihovim tester metodama. Mozes koristiti ovo da napises slicne metode
+
+ --------------------------------
+
+ 1. Write a method named coldestHourInFile that has one parameter, a CSVParser named parser. 
+
+1. napisi metodu zvanu coldestHourInFile koja ima jedan parametar, CSVParser zvan parser.
+
+ Ova metoda vraca CSVRecord sa najhladnijom temperaturom u fileu i s time informacije o najhladnijoj temperaturi, kao sto su sat najhladnije temperature
+
+Trebao bi isto tako napisati void metodu zvanu testColdestHourInFile() da testiras ovu metodu i printas informacije o najhladnijoj temperaturi, kao sto je vrijeme temperature
+
+NOTE: ponekad ne postoji valjano citanje trenutacnog sata, tako da temperature field kaze -9999. Trebao bi ignorirati ovu bogus temperaturu kada kalkuliras najnizu temperaturu.
+

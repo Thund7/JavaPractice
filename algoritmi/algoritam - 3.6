@@ -1,0 +1,12 @@
+prvo stvoriti csvrecord koji sprema nista (null). onda pozvati directoryresource da korisnik moze pozvati vise fileova koje treba. onda proci kroz svaki od tih fileova i za svaki od fileova napraviti novi fileresource. e sada, za svaki file pozvati metodu hottesthourinfile i spremiti u csvrecord zvanu current row. sada prakticki ide copy pasteanje ono sto smo napravili. ako je largestsofar prazan, uzmi trenutacni red, ako nije neka preuzme vecu temperaturu ako postoji veca temperatura.
+
+algoritam:
+1. napraviti novi csvrecord zvan largestsofar i spremiti u njega null
+2. pozvati novi directoryresource
+3 napraviti iteraciju svih odabranih fileova
+4. stvoriti novi fileresource za svaki file u petlji
+5. pozvati hottesthourinfile sa funkcijom getcsvparser novog fileresourca i spremiti ga u csvrecord zvan currentrow
+6. ako je largestsofar null, spremiti trenutacni currentrow
+7. ako je popunjen, parsirati dva doublea iz currentTemp i largestTemp sa funkcijom get("temperatureF")
+8. ako je currentTemp veci od largestTemp, spremi currentrow u largestsofar(jer je tipa csvrecord)
+9. na kraju vrati largestsofar (largestsofar temperaturu)
