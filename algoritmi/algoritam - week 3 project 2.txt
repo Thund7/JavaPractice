@@ -20,3 +20,66 @@ Trebao bi isto tako napisati void metodu zvanu testColdestHourInFile() da testir
 
 NOTE: ponekad ne postoji valjano citanje trenutacnog sata, tako da temperature field kaze -9999. Trebao bi ignorirati ovu bogus temperaturu kada kalkuliras najnizu temperaturu.
 
+----------------------------------
+
+2. napisi metodu fileWithColdestTemperature koja nema parametara.
+
+Ova metoda bi trebala vracati string koji je ime filea iz selektiranog filea koji sadrzi najhladniju temperaturu.
+
+Trebao bi isto napisati metodu nazvanu testFileWithColderstTemperature() da bi testirao ovu metodu. Primjeti da nakon sto odredimo filename, trebali bi pozvati metodu coldestHourInFile da odredimo najhladniju temperaturu na taj dan.
+
+Kada se fileWithColdestTemperature pokrene i selektira fileove za january 1-3 u 2014, metoda bi trebala isprintati:
+bla bla bla
+
+
+------------------------------------
+
+3. napisi metodu zvanu lowestHumidityInFile koja ima jedan parametar, csvparser nazvan parser. ova metoda vraca csvrecord koja ima najmanji humidity. ako je jednako, tada vrati prvu ciji je zapis nadjen.
+
+Primjeti da ponekad nema broja u Humidity kolumni pa odnosno toga pise string n/a. ovo se dogadja vrlo rijetko. trebao bi provjeriti da budes siguran da vrijednost koju dobivas nije n/a prije nego sto konvertiras u broj.
+
+Isto tako primjeti da je header za vrijeme ili timeEst ili TimeEdt, ovisno o dobu godine. odnosno toga ces upotrebljavati dateUTC field na pravom kraju data fajla da bi dobio oboje vrijeme i datum temperature koju ocitavas.
+
+Trebao bi isto napisati void metodu nazvanu testLowestHumidityInFile() da testiras metodu koja pocinje s ovim linijama:
+
+FileResource fr = new FileResource();
+CSVParser parser = fr.getCSVParser();
+CSVRecord csv = lowestHumidityInFile(parser);
+
+i tada ispisuje najnizi humidity I vrijeme najnizeg humiditya kad se dogodilo. Npr. za file weather-2014-01-20.csv, the output should be:
+
+Lowest Humidity was 24 at 2014-01-20 19:51:00
+
+NOTE: ako pogledas na podatke za january 20 2014, primjetit ces humidity je isto 24 kod 3:51 pm, ali bi ti trebao vratiti prvi takav rekord kad se nadje.
+
+------------------------------------
+ 
+4. Napisi metodu lowestHumidityInManyFiles koja nema parametara. Ova metoda vraca CSVRecord koja ima najmanji humidity kroz sve fileove. Ako postoji jednakost, vrati prvi takav zapis koji je nadjen
+
+Trebao bi isto napisati void metodu nazvanu testLowestHumidityInManyFiles() da testiras ovu metodu i da ispises najnizi humidity I vrijeme kada se humidity dogodio. Budi siguran da testiras ovu metodu na dva filea tako da mozes provjeriti da li radi tocno.
+
+Ako pokrenes ovaj program i selektiras fileove od january 19 i 20 2014, dobit ces:
+
+Lowest Humidity was 24 at 2014-01-20 19:51:00
+
+--------------------------------
+
+5. Napisi metodu averageTemperatureInFile koja ima jedan parametar, CSVParser nazvan parser. Ova metoda vraca double koji reprezentira prosjecnu temperaturu u fileu
+
+Trebao bi isto napisati void metodu nazvanu testAverageTemperatureInFile() da testiras ovu metodu. Kada se ova metoda pokrene i selektira fajlove za January 20, 2014, the method should print out
+
+Average temperature in file is 44.93333333333334
+
+--------------------------------
+
+6. Napisi metodu averageTemperatureWithHighHumidityInFile koja ima dva parametra, CSVParser nazvan parser i integer nazvan value.
+
+Ova metoda vraca double koji reprezentira prosjecnu temperaturu samo za one temperature gdje je humidity veca ili jednaka vrijednosti(value)
+
+ Trebao bi isto tako napisati void metodu nazvanu testAverageTemperatureWithHighHumidityInFile() da testiras ovu metodu. Kada se ova metoda pokrene provjeravajuci humidity veci ili jednaki od 80 i selektira fajl za january 20 2014, metoda bi trebala printati:
+
+No temperatures with that humidity
+
+Ako pokrenes metodu provjeravajuci za humidity vec ili jednaki od 80 i selektiras file march 20 2014, mokriji dan, metoda by trebala isprintati:
+
+Average Temp when high Humidity is 41.78666666666667
