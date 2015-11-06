@@ -47,9 +47,9 @@ public class zadatakJedan {
         CSVParser parser = fr.getCSVParser();
         System.out.println(listExporters(parser, "Nauru"));
         parser = fr.getCSVParser();
-        listExportersTwoProducts(parser, "gold", "diamonds");
+        listExportersTwoProducts(parser, "cotton", "flowers");
         parser = fr.getCSVParser();
-        System.out.println("number of exporters: " + numberOfExporters(parser, "gold"));
+        System.out.println("number of exporters: " + numberOfExporters(parser, "cocoa"));
         parser = fr.getCSVParser();
         bigExporters(parser, "$999,999,999,999");
     }

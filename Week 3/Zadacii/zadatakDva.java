@@ -83,32 +83,36 @@ public void testAverageTemperatureInFile() {
         double counter = 0;
         //if (result)
 
-        for (CSVRecord currentRow : parser) {
-            if (highestSoFar == null) {
-            highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar); 
-            sakupljac = sakupljac +  Double.parseDouble(currentRow.get("TemperatureF"));
-            counter++;
-            }
-            else if ( Double.parseDouble(highestSoFar.get("Humidity")) < Double.parseDouble(currentRow.get("Humidity"))) {
-                sakupljac = 0;
-                counter = 0;
-            }
-            else if (Double.parseDouble(highestSoFar.get("Humidity")) == Double.parseDouble(currentRow.get("Humidity"))) {
-            highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar); 
-                sakupljac = sakupljac + Double.parseDouble(currentRow.get("TemperatureF"));
-                counter++;
-            }
-            else 
-            highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar); 
+ for (CSVRecord currentRow : parser) {
+             if (highestSoFar == null) {
+             highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar); 
+             sakupljac = sakupljac +  Double.parseDouble(currentRow.get("TemperatureF"));
+             counter++;
+             }
+             else if ( Double.parseDouble(highestSoFar.get("Humidity")) < Double.parseDouble(currentRow.get("Humidity"))) {
+                 sakupljac = 0;
+                 counter = 0;
 
+                 highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar);
+                 sakupljac = sakupljac + Double.parseDouble(currentRow.get("TemperatureF"));
+                 counter++; 
 
-            }
-
+             }
+             else if (Double.parseDouble(highestSoFar.get("Humidity")) == Double.parseDouble(currentRow.get("Humidity"))) {
+             highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar); 
+                 sakupljac = sakupljac + Double.parseDouble(currentRow.get("TemperatureF"));
+                 counter++;
+             }
+             else 
+             highestSoFar = getHighestHumidityOfTwo(currentRow, highestSoFar); 
+             }
+            System.out.println("evo ti hjuuumiiditiyyy "+ highestSoFar.get("Humidity"));
             double average = sakupljac / counter;
-            if (!(average > 0 && average < 999))
-                 return -1;
-            else 
+            System.out.println("sta fali averageu? " + sakupljac);
+            if (Double.parseDouble(highestSoFar.get("Humidity")) >= value)
             return average;     
+            else
+            	return -1;
 
         } 
  
@@ -213,15 +217,21 @@ return highestSoFar;
 
 //--------------    
         public CSVRecord getLowestHumidityOfTwo(CSVRecord currentRow, CSVRecord lowestSoFar) {
+            double tempHumidity = 0;
         if (lowestSoFar == null)
                 lowestSoFar =  currentRow;
         else if (lowestSoFar == currentRow)
                return lowestSoFar;
          else {
-            double tempHumidity = Double.parseDouble(currentRow.get("Humidity"));
+             if (Double.parseDouble(currentRow.get("Humidity")) > 0 && Double.parseDouble(currentRow.get("Humidity")) < 999) {
+            tempHumidity = Double.parseDouble(currentRow.get("Humidity"));
+
             double lowest  = Double.parseDouble(lowestSoFar.get("Humidity"));
             if (tempHumidity < lowest)
                 lowestSoFar = currentRow;
+        	}
+        	else 
+        		System.out.println("");
          }
    
     return lowestSoFar;
