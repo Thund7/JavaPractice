@@ -215,7 +215,7 @@ return highestSoFar;
 
     }
 
-//--------------    
+//-------------- 3----------------------------   
         public CSVRecord getLowestHumidityOfTwo(CSVRecord currentRow, CSVRecord lowestSoFar) {
             double tempHumidity = 0;
         if (lowestSoFar == null)
@@ -255,7 +255,7 @@ return highestSoFar;
         System.out.println("Lowest Humidity was " + csv.get("Humidity") + " at "+ csv.get("DateUTC"));
     }
 
-
+//------------------------------------------------
 
 //---------------    4
 
