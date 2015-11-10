@@ -1,0 +1,8 @@
+1. prvo napraviti metodu ciji ce argument biti fileresource, tj file koji zelimo otvoriti i procitati
+2. napravit cemo tri varijable, totalBirths, totalBoys i totalGirls jer ce nam trebati za krajnje rezultate
+3. proci cemo kroz for petlju u kojoj spremamo varijable totalBirths, totalGirls i totalBoys (zapamti, nema headera)
+4. prvo cemo napraviti varijablu brojRodjenih koja ce parsirati direktno podatak broj rodjenih i napravit ce se isponova svaki put kada se csvRecord pozove
+5. spremit cemo brojRodjenih u varijablu totalBirths,tj. dodat cemo svaki krug
+6. sada moramo odrediti da li je record muski ili zenski
+7. ako je muski, spremamo ga u totalBoys, ako je zenski, u totalGirls
+8. izlazimo iz petlje i ispisujemo rezultate sa tri System.out.println("");
