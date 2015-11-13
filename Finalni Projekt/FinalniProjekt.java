@@ -77,7 +77,7 @@ public int getRank(int year, String name, String gender) {
         //ako je ime jednako imenu koju trazimo i spolu koju trazimo,
         //parsiramo ime kao rank 1, i kasnije ga podizemo ako nije rank 1  
 
-
+   CSVRecord csvRank = null;  
    // tempName = currentRow.get(0).toString();
     CSVRecord highestNumberOfBirths = null;    
 
@@ -87,10 +87,11 @@ public int getRank(int year, String name, String gender) {
         if (Integer.parseInt(currentRow.get(2)) >= nameBirths && currentRow.get(1).equals(gender)) {
             rank++;
             tempName = currentRow.get(0).toString();
-            if (tempName.equals(name))
+            if (tempName.equals(name)) {
                  break;
          }
     }
+}
         if (!tempName.equals(name))
             rank = -1;
 return rank;     
@@ -167,48 +168,42 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
        return dinamo;
     }
 
-    public int getRank(int year, String name, String gender) {
-    String fname = "testing/yob" + year + "short.csv";          
-    FileResource fr = new FileResource(fname);
-    
-    int rank = 0;
-    int nameBirths = 0;
-//znaci napraviti ne da ti vraca potpuni broj rodjenja, nego csvrecord s najvisim rankom
-    String tempName = "";
-    CSVRecord highestNumberOfBirths = null;    
-
-    for (CSVRecord currentRow : fr.getCSVParser(false)) {
-        highestNumberOfBirths = getHighestBirthsOfTwo(currentRow,highestNumberOfBirths);
-//stao sam na mjestu gdje odredjujem rank
-        if (Integer.parseInt(currentRow.get(2)) >= nameBirths && currentRow.get(1).equals(gender)) {
-            rank++;
-            tempName = currentRow.get(0).toString();
-            if (tempName.equals(name))
-                 break;
-         }
-    }
-        if (!tempName.equals(name))
-            rank = -1;
-return rank;     
-}
 
     public void yearWithHighestRank(String name, String gender) {
-        CSVRecord highestSoFar  = null;
+        int highestRankSoFar  = -1;
         String fajl = " ";
         int births = 0;
+        String najvecaGodina = "0";
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()) {
+            fajl = f.toString();    
+            int index = fajl.lastIndexOf("yob");
+            String godina = fajl.substring(index+3,index+7);
             FileResource fr = new FileResource(f);
-            CSVRecord currentRow = totalBirths(fr, name, gender);
-            highestSoFar = getHighestBirthsOfTwo(currentRow,highestSoFar); 
-            if (currentRow == highestSoFar) {
-                 fajl = f.toString();    
-                 int index = fajl.lastIndexOf("yob");
-                 fajl = fajl.substring(index+3,index+7);
+            int currentRank = getRank(Integer.parseInt(godina),name,gender);
+            highestRankSoFar = getHighestRanksOfTwo(currentRank,highestRankSoFar); 
+            if (currentRank == highestRankSoFar) {
+                 najvecaGodina = fajl.substring(index+3,index+7);
             }
         }
-    System.out.println("highest rank was " +  getRank(Integer.parseInt(fajl), name, gender) +
-                       " in year " + fajl);
+        int pravaGodina = Integer.parseInt(najvecaGodina);
+    if (highestRankSoFar == -1)
+    System.out.println("There are no names in those files");
+    else    
+    System.out.println("highest rank was " +  getRank(pravaGodina, name, gender) +
+                       " in year " + pravaGodina);
+    }
+
+        public int getHighestRanksOfTwo(int currentRank, int highestRankSoFar) {
+    
+    if (highestRankSoFar == -1)
+        highestRankSoFar =  currentRank; 
+    else {
+        if (currentRank < highestRankSoFar)
+            highestRankSoFar = currentRank;
+        }
+   
+    return highestRankSoFar;
     }
 
     public CSVRecord getHighestBirthsOfTwo(CSVRecord currentRow, CSVRecord highestSoFar) {

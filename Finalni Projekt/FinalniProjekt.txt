@@ -31,3 +31,4 @@ algoritam za getName
 4.inicijalizirat cemo hrpu varijabli s nulom
 5. za svaki red u fajlu (naravno kad pozoves parser)..
 6. provjerit cemo da li je to taj gender i rank koji trazimo, i da li je ime suprotno od zadnjeg imena
+
