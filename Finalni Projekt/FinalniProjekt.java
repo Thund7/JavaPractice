@@ -1,6 +1,7 @@
 import edu.duke.*;
 import org.apache.commons.csv.*;
 import java.io.*;
+import java.lang.*;
 
 public class FinalniProjekt {
     public void printNames() {
@@ -169,11 +170,15 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
     }
 
 
-    public void yearWithHighestRank(String name, String gender) {
+    public double yearWithHighestRank(String name, String gender) {
         int highestRankSoFar  = -1;
         String fajl = " ";
         int births = 0;
         String najvecaGodina = "0";
+
+        double zbrojSvihRankova = 0;
+        double brojac = 0;
+
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()) {
             fajl = f.toString();    
@@ -182,16 +187,28 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
             FileResource fr = new FileResource(f);
             int currentRank = getRank(Integer.parseInt(godina),name,gender);
             highestRankSoFar = getHighestRanksOfTwo(currentRank,highestRankSoFar); 
-            if (currentRank == highestRankSoFar) {
+            if (currentRank == highestRankSoFar && highestRankSoFar > -1) {
                  najvecaGodina = fajl.substring(index+3,index+7);
             }
+            if (currentRank > -1) {
+                zbrojSvihRankova = zbrojSvihRankova + currentRank;
+                brojac++;
+            }
         }
+
+        double prosjekSvihRankova = zbrojSvihRankova / brojac;  
+
+        Double d1 = new Double(prosjekSvihRankova);
+        if (d1.isNaN()) 
+                prosjekSvihRankova = -1;
         int pravaGodina = Integer.parseInt(najvecaGodina);
     if (highestRankSoFar == -1)
     System.out.println("There are no names in those files");
     else    
     System.out.println("highest rank was " +  getRank(pravaGodina, name, gender) +
                        " in year " + pravaGodina);
+
+    return prosjekSvihRankova;
     }
 
         public int getHighestRanksOfTwo(int currentRank, int highestRankSoFar) {
@@ -222,6 +239,11 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
    
     return highestSoFar;
     }
+//------------------------------------------------------------------
+
+
+
+//-----------------6------------------------------------------------
 
 
 
