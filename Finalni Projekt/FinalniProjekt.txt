@@ -1,0 +1,33 @@
+Modificirajte metodu totalBirths (pokazanu u videu u ovom projektu) koja isto tako ispisuje brojeve jedinstvenih imena djevojaka, broj jedinstvenih imena djecaka i potpuni broj imena u fajlu.
+
+Napisite metodu nazvanu getRank koja ima tri parametra: integer nazvan year, string nazvan name, i string nazvan gender (F je za zensko, M je za musko). Ova metoda vraca rank imena u fajlu za odredjeni spol, gdje rank 1 je ime najveceg broja rodjenja. Ako ime nije u fajlu, tada vrati -1. Npr, u fajlu “yob2012short.csv”, po imenu Mason, godini 2012 i spolu ‘M’, vraceni broj je 2, kao sto je Mason djecacko ime sa drugim najvecim brojem rodjenja. Davano imenu Mason, godina 2012 i spol ‘F’, broj vracen je -1 kad se Mason ne pojavljuje sa F u tom fajlu.
+
+Napisite metodu nazvanu getName koja ima tri parametra: integer nazvan year, integer nazvan rank, i string nazvan gender (F za female i M za male). Ova metoda vraca ime osobe u fajlu po tom ranku, za zadani gender, gdje je rank 1 ime najveceg broja rodjenja. Ako rank ne postoji u fajlu, tada “NO NAME” je vracen.
+
+
+    Koje bi vase ime bilo da ste rodjeni u nekoj drugoj godini? Napisite void metodu nazvanu whatIsNameInYear koja ima cetiri parametra: string name, integer nazvan year koji reprezentira godinu u kojoj je to ime rodjeno, integer nazvan newYear i string nazvan gender (F za zensko i M za musko). Ova metoda odredjuje koje name bi trebalo biti imenovano ako su rodjeni u drugacijoj godini, bazirano na istoj popularnosti. To jest, trebao bi determinirati rank imena u godini u kojoj su rodjeni, i tada ispisati ime rodjeno u newYear koje je istog ranka i istog spola. Npr, upotrebljavajuci fajlove “yob2012short.csv” i “yob2014short.csv”, primjetite da u 2012 Isabella je trece najpopularnije zensko ime. Da je Isabella rodjena u 2014 godinu umjesto toga, zvala bi se Sophia, trece najpopularnije zensko ime te godine. Output izgledao ovako:
+
+Isabella born in 2012 would be Sophia if she was born in 2014.
+
+Napisi metodu yearOfHighestRank koji ima dva parametra: string name, i string nazvan gender (F za zensko i M za musko). Ova metoda odabire raspon fajlova da bi procesirali i vratili integer, godinu sa najvisim rankom za ime i spol. Ako ime i spol nisu ni u jednim od selektiranih fajlova, trebalo bi vracati -1. Npr, pozivajuci yearOfHighestRank s imenom Mason i spolom ‘M’ i selektirajuci tri test fajla iznad rezultira vracajuci godinu 2012. To je zato jer je Mason rankiran drugo najpopularnije ime u 2012, cetvrto u 2013 i rankiran trece u 2014. Njegov najveci rank bio je u 2012
+
+algoritam za fileWithHighestRank:
+1. prvo cemo napraviti red zvan highestSoFar(najveci rank u fajlu) i pokazat cemo ga na nulu
+2. onda cemo napraviti string fajl gdje cemo ubaciti trazenu godinu
+3. onda cemo pozvati direktoryResource da korisnik odabere vise godina ili fajlova
+4. e sad idemo kroz loop za svaki odabrani file
+5. zbog nekog razloga file se mora ubaciti u fileResource
+6. uzimamo trenutacni red pozivajuci highestRankInFile
+-trebamo izraditi highestRankInFileMetodu
+7. ubacujemo u highestSoFar red metodu getHighestOfTwo
+-trebamo izraditi getHighestOfTwo
+8. u svakom loopu: ako je trenutacni red jednak highestsofar, onda ubaci fajl to string, nadji indeks pocetka godine, i onda ubaci pocetak godine u fajl
+9. izidji iz loopa, vrati fajl
+
+algoritam za getName
+1. metoda uzima tri parametra: godinu, rank, gender
+2. spremit cemo godinu u string koji ce odredjivati ime fajla da ga lakse nadjemo
+3. napravit cemo novi fileresource s tim stringom 
+4.inicijalizirat cemo hrpu varijabli s nulom
+5. za svaki red u fajlu (naravno kad pozoves parser)..
+6. provjerit cemo da li je to taj gender i rank koji trazimo, i da li je ime suprotno od zadnjeg imena

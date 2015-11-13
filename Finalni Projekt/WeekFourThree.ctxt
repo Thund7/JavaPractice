@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ printNames()
+comment1.params=fr
+comment1.target=void\ totalBirths(edu.duke.FileResource)
+comment1.text=\tpublic\ boolean\ doesNameRepeats(FileResource\ fr,\ CSVRecord\ reader)\ {\r\n\t\tint\ counter\ \=\ 0;\r\n\t\tint\ birthsNumbers\ \=\ Integer.parseInt(reader.get(2));\r\n\t\tfor\ (CSVRecord\ secondReader\ \:\ fr.getCSVParser(false))\ {\r\n\t\t\tif(secondReader.get(0).equals(name));\r\n\t\t\tcounter++;\r\n\t\t}\r\n\t\tif\ (counter\ >\ 1)\r\n\t\t\treturn\ true;\r\n\t\telse\r\n\t\t\treturn\ false;\r\n\t}\r\n
+comment2.params=
+comment2.target=void\ testTotalBirths()
+numComments=3
