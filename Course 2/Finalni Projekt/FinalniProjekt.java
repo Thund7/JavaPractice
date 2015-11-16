@@ -68,7 +68,7 @@ public class FinalniProjekt {
 //-----------------2-------------------------------------------
 
 public int getRank(int year, String name, String gender) {
-    String fname = "testing/yob" + year + "short.csv";          
+    String fname = "us_babynames_by_year/yob" + year + ".csv";        
     FileResource fr = new FileResource(fname);
     
     int rank = 0;
@@ -102,7 +102,7 @@ return rank;
 //----------------3------------------------------------------------
 //ovo cemo analizirati
 public String getName(int year, int rank, String gender) {
-	String fname = "testing/yob" + year + "short.csv";
+	String fname = "us_babynames_by_year/yob" + year + ".csv";
 	FileResource fr  =new FileResource(fname);
         int highestNameBirths = 0;
         int howManyRanks = 0;
@@ -139,7 +139,7 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
 
 //------------------------------------------------------------------
 
-//-------------5----------------------------------------------------
+//-------------5 i 6----------------------------------------------------
     public CSVRecord totalBirths (FileResource fr, String name, String gender) {
         
         int totalBirths = 0;
@@ -171,25 +171,36 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
 
 
     public double yearWithHighestRank(String name, String gender) {
-        int highestRankSoFar  = -1;
+        int highestRankSoFar  = 100000000;
         String fajl = " ";
         int births = 0;
         String najvecaGodina = "0";
-
+        boolean prviFile = true;
         double zbrojSvihRankova = 0;
         double brojac = 0;
+        int tempGod = 0;
+        int godinaZivota = 0;
 
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()) {
             fajl = f.toString();    
             int index = fajl.lastIndexOf("yob");
             String godina = fajl.substring(index+3,index+7);
+            int prvaGodina = Integer.parseInt(godina);
+
             FileResource fr = new FileResource(f);
             int currentRank = getRank(Integer.parseInt(godina),name,gender);
-            highestRankSoFar = getHighestRanksOfTwo(currentRank,highestRankSoFar); 
-            if (currentRank == highestRankSoFar && highestRankSoFar > -1) {
+
+            if (currentRank == highestRankSoFar && tempGod < prvaGodina)
+                godinaZivota = tempGod;
+
+            if (currentRank < highestRankSoFar && prviFile==true) {
+                  highestRankSoFar = getHighestRanksOfTwo(currentRank,highestRankSoFar);
                  najvecaGodina = fajl.substring(index+3,index+7);
+                 tempGod = Integer.parseInt(najvecaGodina);
             }
+          
+
             if (currentRank > -1) {
                 zbrojSvihRankova = zbrojSvihRankova + currentRank;
                 brojac++;
@@ -199,15 +210,17 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
         double prosjekSvihRankova = zbrojSvihRankova / brojac;  
 
         Double d1 = new Double(prosjekSvihRankova);
-        if (d1.isNaN()) 
+        if (d1.isNaN()) {
                 prosjekSvihRankova = -1;
-        int pravaGodina = Integer.parseInt(najvecaGodina);
+                System.out.println("nema podataka za ovu godinu");
+            }
+        int pravaGodina = godinaZivota;
     if (highestRankSoFar == -1)
     System.out.println("There are no names in those files");
     else    
     System.out.println("highest rank was " +  getRank(pravaGodina, name, gender) +
                        " in year " + pravaGodina);
-
+    System.out.println(pravaGodina);
     return prosjekSvihRankova;
     }
 
@@ -243,13 +256,40 @@ public void whatIsNameInYear(String name, int year, int newYear, String gender) 
 
 
 
-//-----------------6------------------------------------------------
+//-----------------7------------------------------------------------
+
+public void getTotalBirthsRankedHigher(int year, String name, String gender) {
+    String fname = "us_babynames_by_year/yob" + year + ".csv";
+    FileResource fr  =new FileResource(fname);
+
+    int highestRanks = 0;
+    CSVRecord mostHighestRank = null;
+    double highestNumberOfBirths = 0;
+
+    int currentRank = getRank(year,name,gender);
+    int counter = currentRank-1;
+
+        for (CSVRecord currentRow : fr.getCSVParser(false)) {
+            
+            if (counter <= 0)
+                break;
+
+            if (currentRank>getRank(year,currentRow.get(0).toString(),gender) && getRank(year,currentRow.get(0).toString(),gender) > -1) {   
+            highestNumberOfBirths += Double.parseDouble(currentRow.get(2));
+            counter--;
+            } 
+
+        }
+    System.out.println("Rankovi iznad trenutacnog imena trenutacno zbroje: " + highestNumberOfBirths);
+
+}
 
 
+}
 
 
 //------------------------------------------------------------------
-}
+
 
   
 
