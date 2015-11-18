@@ -1,0 +1,20 @@
+...ova metoda provjerava da li je slovo numericko ili abecedno ili nesto drugo...
+Algoritam za digitTest()
+1. prvo napravit cemo string nazvan test koji cemo testirati
+2. onda cemo napraviti pravu for petlju
+3. inicijalizirat cemo k na nulu, k mora biti manje od test.lengtha (jer k ide do 3, length pokazuje 4, npr), i stavit da se k povecava na kraju svakog for loopa
+     4. napravit cemo char ch i u njega spremiti char iz testa, na poziciji k (znaci pocevsi od nule pa na dalje)
+     5. grananje -- ako je char digit (postoji metoda za to u stringbuilderu isprintat cemo ć is digit)
+     6. grananje -- ako je char alphabetic (za to isto postoji metoda) isprintat cemo ć is alphabetic
+     7. grananje -- za dodatak ispitat cemo hashtag i ispisati da je to hashtag ako treba
+8. izlaz iz petlje 
+
+...ova metoda bas konvertira slova u upper i lower...
+Algoritam za conversionTest()
+1. prvo napravimo string nazvan test i nazovemo ga kak god
+2. onda cemo napraviti pravu for petlju
+3. inicijalizirat cemo k na nulu, k mora biti manje od test.lengtha (jer k ide do 3, length pokazuje 4, npr), i stavit da se k povecava na kraju svakog for loopa
+	4. napravit cemo karaktr cha koji ce nam govoriti gdje je character po k varijabli
+	5. onda cemo napraviti karakter ucha koji ce nam spremati samo upperCaseove i to tako sto ce uzeti cha za argument
+	6. onda cemo napraviti karakter lcha, i napraviti isto, samo cemo ovaj put napraviti za sve karaktere na lowecaseu
+	7. za kraj petlje, isprintat cemo sve rezultate

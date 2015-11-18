@@ -1,0 +1,40 @@
+algoritam za testCeasar
+1. prvo cemo ustvrditi key, znaci za toliko cemo se vratiti unatrag u abecedi
+2. onda cemo napraviti novi fileResource, tj pustit cemo korisniku da odabere fileResource
+3. premjestit cemo taj fileResource asString() u string zvan message
+4. onda cemo stvoriti encrypted string u kojeg cemo pozvati metodu encrypt()
+5. isprintat cemo rezultat
+6. sad cemo napraviti string decrypted gdje cemo dekriptirati vec enkriptiranu poruku, da vidimo jesmo li sve dobro napravili, sa 26 minus key
+7. isprintat cemo rezultat
+
+algoritam za encrypt
+1. staviti za argumente string input, tj string kojeg hocemo kodirati, i key, kljuc koliko hocemo to kodirati, ak me razmes, vracamo izmjenjeni stringBuilder string
+2. napraviti novi StringBuilder zvan poruka, i staviti u njega kao argument input string ("Volim dinamo")
+3. napraviti novi string alphabet i u njega staviti sva slova koja postoje u abecedi(ABCD...)
+5. napraviti jos jednu abecedu gdje cemo ubaciti samo niza slova abecede(abcd...)
+6. e sad, napraviti shiftedAlphabet string koji zapocinje od keya u pravoj abecedi i dodaj mu pocetak prave abecede do keya(UXYZ...)
+7. naprviti string shiftedLowerAlphabet gdje ce isto biti pomaknuta abeceda ali sa malim slovima (uxyz...)
+
+8. sad cemo napraviti petlju koja pocinje od nule, ide do duzine stringbuildera encrypted, i inkrement se povecava za jedan
+	9. napraviti char currChar u kojeg cemo ubaciti char iz Poruke po indeksu koji se vrti u petlji (v,o,l...)
+	10. napraviti dvije varijable za indeks, jednu za velika slova, jednu za mala slova, i obadva ce poceti od -1
+
+	11.
+	--grananje-- sad cemo provjeriti da li je currChar malo ili veliko slovo. ako je malo slovo (tj ako indexOf alphabeta vraca -1) stavit cemo u indl indeks tog malog slova 
+	(tipa: 
+	indl(4) = lowerAlphabet(abcd...).indexOf('d')
+	--grananje-- ako je currChar veliko, onda spremamo index od currChar u indh   
+
+	12.
+	--grananje--
+	ako je indh suprotno od -1
+		13. pravimo char NewChar u kojeg smjestamo slovo iz shiftedAlphabet (UXWYZ..--Y) po indeksu indh(4) iz indeksa normalne abecede
+		14. postavljamo novo slovo u Poruku brojac po brojac
+		--grananje--
+	ako je indl suprotno od -1
+		13. pravimo char veryNewChar u kojeg smjestamo slovo iz shiftedAlphabet (uxwyz..) po indeksu indl(4) iz indeksa normalne abecede
+		14. postavljamo novo slovo u Poruku brojac po brojac
+
+11. vracamo poruka.toString() (jer valjda tako mora biti StringBuilder)
+
+

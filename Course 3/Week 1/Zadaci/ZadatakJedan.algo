@@ -1,0 +1,26 @@
+algoritam za isVowel:
+1. uzima parametar cha, koji je ili nije neki samoglasnik
+2. napraviti if--- provjerit cemo da li je a,e,i,o,u onda vraca true
+3. napraviti else--- ako nije, vraca false
+
+
+algoritam za replaceVowels metodu:
+1. parametri su string phrase i char cha
+2.  proci u for petlji kroz svaki character stringa
+(kako proci u for petlji kroz svaki character stringa?)
+a. brojac pocinje od 0, pozvati funkciju charAt sa brojacem,i ispitati taj character, u novi character
+3. pozvati funkciju isVowel
+4. ako vraca true, zamijeni slovo sa asteriksom
+5. ako je false, nemoj zamijeniti slovo
+
+
+algoritam za emphasize:
+1. parametri ce biti string phase i character cha,  a vracat ce phrase ali sa izmjenjenim char
+2. napraviti StringBuilder fraza pomocu kojeg cemo izmjenjivati phrase
+3. proci kroz StringBuilder char po char
+	4. napraviti novi char u kojeg ce brojac ici
+	5. ako je neparni brojni indeks u stringu (tj ako je parna, jer se pocinje od nule), ---to 	cemo napraviti tako sto cemo dijeliti sa % i dijeliti cemo dva, i ako kad se dijeli sa 	brojacem, vraca nulu--- onda je zamijenjivacki char '*'
+	6. ako je parni brojni indeks u stringu onda je zamijenjivacki char '+'
+	7. pozvat cemo replaceVowels, i drugi argument u metodi bit ce zamjenjivacki char
+	8. spremit cemo povratni string u stringbuilder
+9. vracamo stringbuilder.tostring()

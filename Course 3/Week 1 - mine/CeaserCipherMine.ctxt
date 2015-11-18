@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=input\ key
+comment0.target=java.lang.String\ encrypt(java.lang.String,\ int)
+comment1.params=
+comment1.target=void\ testCeasar()
+comment2.params=
+comment2.target=void\ testiiing()
+numComments=3
