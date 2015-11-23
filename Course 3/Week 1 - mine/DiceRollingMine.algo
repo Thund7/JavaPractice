@@ -1,0 +1,20 @@
+algoritam za simpleSimulate:
+1. nista ne vraca, a prima integer rolls
+2. napraviti novi objekt random
+3. napraviti dva integera, jedan se zove twos(counter za snake eyes), drugi se zove twelves(counter za sest i sest)
+4. napraviti for petlju koja prolazi kroz sve rollove iz argumenta
+	5. napravit cemo dvije kocke, ja cu ih nazvati kocka1 i kocka2, i ubacit cemo u njih vrijednosti od 1 do 6
+	6.--grananje--
+	  7. ako kocka1 i kocka2 oboje dobiju jedan na kocki, dodat cemo jedan counter u twos
+	  8. ako kocka1 i kocka2 oboje dobiju sest na kocki, dodat cemo jedan counter u twelves  
+9. isprintamo koliko smo dobili snakeeyes, i sixeyesa, i onda napravimo postotke
+
+algoritam za simulate
+1. nista ne vraca, ali prima rolls
+2. napraviti array zvan counts, koji ima 13 mjesta (od 0 do 12)
+3. napraviti for petlju koja prolazi kroz rolls
+	4. napraviti dvije kocke, od 1 do 6
+	5. napisati koliko su kocke rollale, i koliko su zajedno dobile
+	6. e sad, zbroj tih dviju kocaka (recimo 1 i 3 = 4), staviti u indeks arraya, te dodati mu counter
+7. napraviti for petlju koja prolazi od 2 do 12
+	8. isprintati k(npr. 2(snake eyes)), isprintati array counts pod k indeksom(koliko puta smo dobili snake eyes), i na kraju isprintavamo postotak (sto * koliko puta smo dobili snake eyes podijeljeno sa koliko puta smo bacali kocke)

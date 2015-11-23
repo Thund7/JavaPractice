@@ -1,0 +1,49 @@
+algoritam za testCeasar
+1. prvo cemo ustvrditi key, znaci za toliko cemo se vratiti unatrag u abecedi
+2. onda cemo napraviti novi fileResource, tj pustit cemo korisniku da odabere fileResource
+3. premjestit cemo taj fileResource asString() u string zvan message
+4. onda cemo stvoriti encrypted string u kojeg cemo pozvati metodu encrypt()
+5. isprintat cemo rezultat
+6. sad cemo napraviti string decrypted gdje cemo dekriptirati vec enkriptiranu poruku, da vidimo jesmo li sve dobro napravili, sa 26 minus key
+7. isprintat cemo rezultat
+
+algoritam za encrypt
+1. staviti za argumente string input, tj string kojeg hocemo kodirati, i key, kljuc koliko hocemo to kodirati, ak me razmes, vracamo izmjenjeni stringBuilder string
+2. napraviti novi StringBuilder zvan poruka, i staviti u njega kao argument input string ("Volim dinamo")
+3. napraviti novi string alphabet i u njega staviti sva slova koja postoje u abecedi(ABCD...)
+5. napraviti jos jednu abecedu gdje cemo ubaciti samo niza slova abecede(abcd...)
+6. e sad, napraviti shiftedAlphabet string koji zapocinje od keya u pravoj abecedi i dodaj mu pocetak prave abecede do keya(UXYZ...)
+7. naprviti string shiftedLowerAlphabet gdje ce isto biti pomaknuta abeceda ali sa malim slovima (uxyz...)
+
+8. sad cemo napraviti petlju koja pocinje od nule, ide do duzine stringbuildera encrypted, i inkrement se povecava za jedan
+	9. napraviti char currChar u kojeg cemo ubaciti char iz Poruke po indeksu koji se vrti u petlji (v,o,l...)
+	10. napraviti dvije varijable za indeks, jednu za velika slova, jednu za mala slova, i obadva ce poceti od -1
+
+	11.
+	--grananje-- sad cemo provjeriti da li je currChar malo ili veliko slovo. ako je malo slovo (tj ako indexOf alphabeta vraca -1) stavit cemo u indl indeks tog malog slova 
+	(tipa: 
+	indl(4) = lowerAlphabet(abcd...).indexOf('d')
+	--grananje-- ako je currChar veliko, onda spremamo index od currChar u indh   
+
+	12.
+	--grananje--
+	ako je indh suprotno od -1
+		13. pravimo char NewChar u kojeg smjestamo slovo iz shiftedAlphabet (UXWYZ..--Y) po indeksu indh(4) iz indeksa normalne abecede
+		14. postavljamo novo slovo u Poruku brojac po brojac
+		--grananje--
+	ako je indl suprotno od -1
+		13. pravimo char veryNewChar u kojeg smjestamo slovo iz shiftedAlphabet (uxwyz..) po indeksu indl(4) iz indeksa normalne abecede
+		14. postavljamo novo slovo u Poruku brojac po brojac
+
+11. vracamo poruka.toString() (jer valjda tako mora biti StringBuilder)
+
+
+Write the method encryptTwoKeys that has three parameters, a String named input, and two integers named key1 and key2. This method returns a String that has been encrypted using the following algorithm. Parameter key1 is used to encrypt every other character with the Caesar Cipher algorithm, starting with the first character, and key2 is used to encrypt every other character, starting with the second character. For example, the call encryptTwoKeys(“First Legion”, 23, 17) should return “Czojq Ivdzle”. Note the ‘F’ is encrypted with key 23, the first ‘i’ with 17, the ‘r’ with 23, and the ‘s’ with 17, etc. Be sure to test this method. 
+
+algoritam za encryptTwoKeys()
+1. prima tri parametra: string input, integere key1 i key2, vraca enkriptirani string
+problem: key1 (tipa 23) enkriptira svaki drugi karakter sa ceasar cipher algoritmom (tipa:d,n,m...---0,2,4...)
+rijesenje: nije problem, samo povecamo inkrement u petlji za dva
+
+problem: key2 (tipa 17), enkriptira svaki drugi karakter, pocevsi od drugog karaktera (tipa 1,3,5...)
+rijesenje: ovo cemo rijesiti isto kao prvo, inkrementiramo za dva, ali brojac pocinje sa 1

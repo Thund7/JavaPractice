@@ -1,0 +1,36 @@
+glavni algoritam za countShakespeare
+1. ova metoda je void, i nema argumenata
+2. napravit cemo string array zvan plays, i stavit cemo u njega (zasad) samo small.txt
+3. napravit cemo string array zvan common, i pozvat cemo getCommon(). getCommon vraca string array sa svim common rijecima
+4. napravit cemo int array zvan counts, i inicijalizirat cemo ga sa toliko mjesta koliko ima u commonu(svaki common ima svoj skup iste rijeci, zapravo najbolje da ga nazovemo skupIstihRijeci)
+5. proci cemo kroz for loop za sve fajl tekstove u playsu
+	6. napravit cemo novi fileResource za svaki tekst u playsu
+	7. sada cemo bre da pobrojimo reči sa metodom countWords i argumentima resource, common, counts
+	8. isprintat cemo koje smo tekstove napravili
+9.  sada cemo proci kroz jos jedan for loop za svaku rijec u common tekstu
+	10. isprintat cemo svaku rijec, i svaki counts sa indeksom(npr ako je counts 0,1,2, na svakom mjestu je tipa 46, 21, 64, jedan count je jedan broj za skup jedne rijeci u fajlu)
+
+algoritam za countWords
+1. ne vraca nista ?, ali prima FileResource resource, array string common, i int counts
+2. prolazimo kroz for petlju za svaku rijec u resource fajl tekstu
+	2.a prvo stavljamo word to lower case
+	3. napraviti int index i pozvati indexOf(common,word)
+	4.--grananje--
+	ako je index suprotno od -1
+	counts[index] se povecava za jedan
+
+algoritam za indexOf
+1. vraca int, a za argumente prima string array list i string word (zapravo prima common array, preimenuj ovo u common)
+2. prolazi kroz for loop za svaku rijec u string arrayu zvanom list
+	3.--grananje--
+	ako je rijec u listi jednak rijeci, vrati k
+4. vrati -1
+
+algoritam za getCommon
+1. napravit cemo novi FileResource zvan resource, u kojeg cemo spremiti common.txt (sve rijeci koje su common)
+2. napravit cemo string array zvan common sa 20 mjesta u arrayu
+3. napravit cemo neki index i inicijalizirat ga sa nulom
+4. napravit cemo loop za svaki string s u resource.words
+	5. u array common po indeksu index stavljamo string s
+	6. povecavamo indeks za jedan
+7. vracamo common 

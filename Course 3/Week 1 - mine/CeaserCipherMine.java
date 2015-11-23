@@ -1,39 +1,49 @@
 import edu.duke.*;
+import java.io.*;
 
 
 public class CeaserCipherMine {
 
 	public String encrypt(String input, int key) {
-		StringBuilder encrypted = new StringBuilder(input);
-		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		String lowerAlphabet = alphabet.toLowerCase();
+		StringBuilder poruka = new StringBuilder(input);
+		String highAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String lowAlphabet = highAlphabet.toLowerCase();
 
-		String shiftedAlphabet = alphabet.substring(key) + 
-								 alphabet.substring(0, key);
-		String shiftedLowerAlphabet = shiftedAlphabet.toLowerCase();
+		String shiftedHighAlphabet = highAlphabet.substring(key) + 
+								 highAlphabet.substring(0, key);
+		String shiftedlowAlphabet = shiftedHighAlphabet.toLowerCase();
 
+        System.out.println(shiftedHighAlphabet);  
 
+		for (int indexSlova = 0; indexSlova<poruka.length(); indexSlova++) {
+			char trenutacnoSlovo = poruka.charAt(indexSlova);
+			int indexLowAlph = -1;
+			int indexHighAlph = -1;
 
-		for (int i = 0; i<encrypted.length(); i++) {
-			char currChar = encrypted.charAt(i);
-			int indl = -1;
-			int indh = -1;
-
-			if (alphabet.indexOf(currChar) == -1)
-				indl = lowerAlphabet.indexOf(currChar);
+			//ako nema slova kojeg trazimo u visokoj abecedi,
+			// onda spremi indeks trenutacnog slova iz niske abecede
+			if (highAlphabet.indexOf(trenutacnoSlovo) == -1)
+				//ovo znaci ima slova u niskoj abecedi
+				indexLowAlph = lowAlphabet.indexOf(trenutacnoSlovo);
 			else
-				indh = alphabet.indexOf(currChar);
+				//ovo znaci ima slova u visokoj abecedi
+				indexHighAlph = highAlphabet.indexOf(trenutacnoSlovo);
 
-			if (indh != -1) {
-				char newChar = shiftedAlphabet.charAt(indh);				
-				encrypted.setCharAt(i,newChar);
+			//ako ima slova u visokoj abecedi, nadji slovo iz shiftane
+			//abecede i spremi u shifted char
+			//tada spremi shifted char u poruku na istom mjestu
+			if (indexHighAlph != -1) {
+				//ovo je dio gdje taman nalazimo sifrirano slovo i sprmeamo ga
+				//u poruku	
+				char shiftedChar = shiftedHighAlphabet.charAt(indexHighAlph);			
+				poruka.setCharAt(indexSlova,shiftedChar);
 			}
-			if (indl != -1) {
-				char veryNewChar = shiftedLowerAlphabet.charAt(indl);
-				encrypted.setCharAt(i,veryNewChar);
+			if (indexLowAlph != -1) {
+				char lowShiftedChar = shiftedlowAlphabet.charAt(indexLowAlph);
+				poruka.setCharAt(indexSlova,lowShiftedChar);
 			}
 		}
-	return encrypted.toString();	
+	return poruka.toString();	
 	}
 
 	public void testCeasar() {
@@ -41,26 +51,47 @@ public class CeaserCipherMine {
 		FileResource fr = new FileResource();
 		String message = fr.asString();
 		//message = message.toUpperCase();
-		String encrypted = encrypt(message, key);
-		System.out.println("sifrirana poruka: " + encrypted);
-		String decrypted = encrypt(encrypted, 26-key);
+		String poruka = encrypt(message, key);
+		System.out.println("sifrirana poruka: " + poruka);
+		String decrypted = encrypt(poruka, 26-key);
 		System.out.println("desifrirana poruka: " + decrypted);
 	}
+
+//------------------------------------------------------------
+//------------------------------------------------------------
 	
-    public void testiiing() {
-    String str1 = "java2s", str2 = "java2s.com";
-    
-    boolean retval = str1.matches(str2);
 
-    System.out.println("Value returned = " + retval);
+	public int[] countLetters(String message) {
+		String alph = "abcdefghijklmnopqrstuvwxyz";
+		int[] counts = new int[26];
+ 		for (int k=0; k < message.length(); k++) {
+ 			char cha = Character.toLowerCase(message.charAt(k));
+ 			int dex = alph.indexOf(cha);
+ 			if (dex != -1) {
+ 				counts[dex] += 1;
+ 			}
+ 		}
+ 		return counts;
+	}
 
-    retval = str2.matches("com");
+ 	public String decrypt(String encrypted) {
+ 		CaesarCipher cc = new CaesarCipher();
+	 	int[] freqs = countLetters(encrypted);
+	 	int maxDex  = maxDex(freqs);
+	 	int dkey = maxDex - 4;
+	 	if (maxDex < 4) {
+	 		dkey = 26 - (4 - maxDex);
+	 	}
+	 	return cc.encrypt(encrypted, 26-dkey);
+	 }
 
-    System.out.println("Value returned = " + retval);    
-
-    retval = str1.matches("java");
-
-    System.out.println("Value returned = " + retval);
-}
+	public int maxDex(int[] vals) {
+		int maxDex = 0;
+		for (int k = 0; k<vals.length; k++) {
+		if (vals[k] > vals[maxDex])
+			maxDex = k;
+		}
+	return maxDex;
+	} 
 
 }
